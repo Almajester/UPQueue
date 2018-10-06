@@ -24,7 +24,7 @@
 #                              indices = { (2, 1) }
 #                              heap = [ None, [(2, 1), "Samson", 5] ]
 #         False <- myQ.empty()
-# ("Samson", 3) <- myQ.remove_min()
+# ("Samson", 5) <- myQ.remove_min()
 #                  myQ.reduce_priority((2, 1), 3)
 #                  myQ.replace((2, 1), "Delilah", 2)
 #
