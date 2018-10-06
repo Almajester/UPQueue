@@ -11,8 +11,27 @@
 #   item to its priority position in the min-heap, and stores its location
 #   in the minheap indexed by key value in a dictionary.
 #
-# Usage:  myQ = UPQueue
-#         myQ.insert((2, 1), "Samson", 3)
+# Note:  this is not a "stable" queue; since it uses a heap, there is no
+#    guaranteed FIFO ordering on sequentially added items with the same priority
+#
+# Usage:           myQ = UPQueue()
+#                  myQ.insert((2, 1), "Samson", 5)
+#          True <- (2, 1) in myQ
+#             1 <- len(myQ)
+#                  print myQ
+#                    For debugging only, prints
+#                              len(heap) = 5
+#                              indices = { (2, 1) }
+#                              heap = [ None, [(2, 1), "Samson", 5] ]
+#         False <- myQ.empty()
+# ("Samson", 3) <- myQ.remove_min()
+#                  myQ.reduce_priority((2, 1), 3)
+#                  myQ.replace((2, 1), "Delilah", 2)
+#
+# Note:  replace reduces or min_heapifies as necessary for new priority
+#    i.e., doesn't assume new is less than old
+#
+# TO DO:  add buildheap() code and function to insert a list of key-item-priority triples
 #
 
 class UPQueue:
