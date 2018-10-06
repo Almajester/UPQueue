@@ -14,24 +14,27 @@
 # Note:  this is not a "stable" queue; since it uses a heap, there is no
 #    guaranteed FIFO ordering on sequentially added items with the same priority
 #
-# Usage:           myQ = UPQueue()
-#                  myQ.insert((2, 1), "Samson", 5)
-#          True <- (2, 1) in myQ
-#             1 <- len(myQ)
-#                  print myQ
-#                    For debugging only, prints
-#                              len(heap) = 5
-#                              indices = { (2, 1) }
-#                              heap = [ None, [(2, 1), "Samson", 5] ]
-#         False <- myQ.empty()
-# ("Samson", 5) <- myQ.remove_min()
-#                  myQ.reduce_priority((2, 1), 3)
-#                  myQ.replace((2, 1), "Delilah", 2)
+# Usage:            myQ = UPQueue()
+#                   myQ.insert((2, 1), "Samson", 6)
+#                   myQ.insert((1, 6), "Achilles", 3)
+#           True <- (2, 1) in myQ
+#              2 <- len(myQ)
+#                   print myQ
+#                      For debugging only, prints
+#                              len(heap) = 2
+#                              indices = { (1, 6): 1, (2, 1): 2 }
+#                              heap = [ None, [(1, 6), "Achilles", 3], [(2, 1), "Samson", 5] ]
+#          False <- myQ.empty()
+#                   myQ.reduce_priority((2, 1), 5)
+#                   myQ.replace((2, 1), "Delilah", 2)
+# ("Delilah", 2) <- myQ.remove_min()
 #
 # Note:  replace reduces or min_heapifies as necessary for new priority
 #    i.e., doesn't assume new is less than old
 #
 # TO DO:  add buildheap() code and function to insert a list of key-item-priority triples
+#   maybe make it a little cleaner, override += to add things to the queue...or maybe that's
+#   not good Python-style.  Maybe add peek() method
 #
 
 class UPQueue:
