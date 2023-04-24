@@ -44,6 +44,18 @@ class UPQueue:
         self.indices = {}
         self.heap = [None]
 
+	def buildHeap(self, k_i_p_triple):
+		"""build a heap from an existing list of (key, item, priority) triples"""
+		self.heap += k_i_p_triple
+		for count, item in enumerate(k_i_p_triple, 1):
+			self.indices[item[0]] = count
+		
+		# now minheapify starting from the len/2 item and working backwards to rootnode
+		i = len(self.heap)//2
+		while i >= 1:
+			self.min_heapify(i)
+			i -= 1
+		
     def insert(self, key, item, priority):
         dex = len(self.heap)
         self.indices[key] = dex
